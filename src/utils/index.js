@@ -17,7 +17,7 @@ const bucket = new AWS.S3({
   }
 });
 
-export function listObjects() {
+export function listObjects(num) {
   const listObjects = new Promise((resolve, reject) => {
     bucket.listObjects((error, data) => {
       if (error) {
@@ -25,10 +25,10 @@ export function listObjects() {
         return;
       }
 
-      resolve(data.Contents);
+      resolve(data.Contents.slice(0, num));
     });
   });
-
+  console.log(listObjects);
   return listObjects;
 }
 
