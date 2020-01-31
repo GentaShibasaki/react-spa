@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import "../styles/navbar.css";
 import Upload from "./Upload";
 import _ from "lodash";
-
+//WIP
 export default function Navbar(props) {
   const { currentView, onChangeCurrentView, onUploadPhoto } = props;
   const inputEl = useRef(null);

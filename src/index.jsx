@@ -1,5 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/App.jsx";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+const { store } = require("./components/redux");
 
-ReactDOM.render(<App />, document.getElementById("root"));
+//WIP
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);

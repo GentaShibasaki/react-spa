@@ -1,8 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
-export default function SinglePhoto(props) {
-  const { photo, onChangeCurrentView } = props;
+//WIP
 
+export default function SinglePhoto() {
   return (
     <img
       className="image"

@@ -1,6 +1,8 @@
 import React from "react";
 import _ from "lodash";
 
+//WIP
+
 export default function AllPhotos(props) {
   const {
     Key,
@@ -8,7 +10,6 @@ export default function AllPhotos(props) {
     onCallChangeViewAndSelectedPhoto,
     newSelectedPhoto
   } = props;
-  //const elements = document.getElementsByClassName("column");
 
   return (
     <img
