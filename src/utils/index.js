@@ -24,11 +24,9 @@ export function listObjects(num) {
         console.error("error: ", error);
         return;
       }
-
-      resolve(data.Contents.slice(0, num));
+      num ? resolve(data.Contents.slice(0, num)) : resolve(data.Contents);
     });
   });
-  console.log(listObjects);
   return listObjects;
 }
 

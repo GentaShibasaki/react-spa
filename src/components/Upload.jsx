@@ -1,19 +1,17 @@
-import React, { useRef, setState } from "react";
+import React, { useRef } from "react";
 import _ from "lodash";
 import "../styles/upload.css";
+import { saveObject } from "../utils/index";
 
-export default function Upload(props) {
-  const { onUploadPhoto } = props;
+export default function Upload() {
   const inputEl = useRef();
-  const onButtonClick = () => {
-    inputEl.current.focus();
+
+  const onClickUpload = () => {
+    inputEl.current.click();
   };
 
-  const handleChange = e => {
-    // console.log(typeof e.target.value);
-    //const split = e.target.value.split("\\")[2];
-    // console.log(`what is ${split}`);
-    onUploadPhoto(e.target.files[0]);
+  const upload = e => {
+    saveObject(inputEl.current.files[0]);
   };
 
   return (
@@ -23,11 +21,9 @@ export default function Upload(props) {
         type="file"
         id="onUploadPhoto"
         name="newPhoto"
-        onChange={e => {
-          handleChange(e);
-        }}
+        onChange={e => upload(e)}
       />
-      <button onClick={onButtonClick} className="uploadButton">
+      <button onClick={onClickUpload} className="button">
         Upload
       </button>
     </div>

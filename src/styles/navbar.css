@@ -7,5 +7,10 @@
 
 .navbar-header {
   cursor: pointer;
+  border-bottom: solid 1px black;
   margin-right: auto;
+}
+.navbar-header:hover {
+  color: red;
+  border-bottom: solid 1px red;
 }

@@ -1,15 +1,24 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { checkPropTypes } from "prop-types";
+import { changeView } from "./redux";
 
 //WIP
 
 export default function SinglePhoto() {
+  const selectedPhoto = useSelector(state => state.selectedPhoto);
+  const dispatch = useDispatch();
+
+  const onClickPhoto = () => {
+    dispatch(changeView(true));
+  };
+
   return (
     <img
-      className="image"
-      src={photo}
+      src={selectedPhoto}
       alt="pancakes"
-      onClick={onChangeCurrentView}
+      onClick={onClickPhoto}
+      className="singlePhoto"
     />
   );
 }

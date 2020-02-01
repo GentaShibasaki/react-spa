@@ -1,23 +1,26 @@
-import React, { useRef } from "react";
+import React from "react";
 import "../styles/navbar.css";
 import Upload from "./Upload";
 import _ from "lodash";
-//WIP
-export default function Navbar(props) {
-  const { currentView, onChangeCurrentView, onUploadPhoto } = props;
-  const inputEl = useRef(null);
+import { useDispatch } from "react-redux";
+import { changeView } from "../components/redux";
 
-  const onChangeCurrentViewFunction = () => {
-    onChangeCurrentView();
+//WIP
+export default function Navbar() {
+  // const { onChangeCurrentView, onUploadPhoto } = props;
+
+  const dispatch = useDispatch();
+
+  const onClick = () => {
+    dispatch(changeView(true));
   };
 
   return (
     <div className="navbar">
-      <input ref={inputEl} type="button" id="switchView" name="newPhoto" />
-      <button onClick={onChangeCurrentViewFunction} className="switchButton">
+      <h1 onClick={onClick} className="navbar-header">
         Home
-      </button>
-      <Upload onUploadPhoto={onUploadPhoto} />
+      </h1>
+      <Upload />
     </div>
   );
 }
