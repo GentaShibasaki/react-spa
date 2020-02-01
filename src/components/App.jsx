@@ -3,9 +3,9 @@ import "../styles/styles.css";
 import Navbar from "./Navbar";
 import AllPhotos from "./AllPhotos";
 import SinglePhoto from "./SinglePhoto";
-import { listObjects, getSingleObject, saveObject } from "../utils/index";
+import { listObjects, getSingleObject } from "../utils/index";
 import { useSelector, useDispatch } from "react-redux";
-import { changeView, setAllPhotos, setOnePhoto, addOnePhoto } from "./redux";
+import { setAllPhotos } from "./redux";
 
 export default function App() {
   const view = useSelector(state => state.currentView);
@@ -18,18 +18,15 @@ export default function App() {
   }, []);
 
   const getPhotos = async () => {
-    const photoObjects = await listObjects();
+    const photoObjects = await listObjects(30);
     const photoBase64Strings = await Promise.all(
-      photoObjects.map(async photoObject => {
+      photoObjects.map(async (photoObject, index) => {
         let tmp = await getSingleObject(photoObject.Key);
         return `data:image/png;base64, ${tmp}`;
       })
     );
     dispatch(setAllPhotos(photoBase64Strings));
-  };
-
-  const changeCurrentView = photo => {
-    dispatch(changeView(true));
+    console.log();
   };
 
   return (

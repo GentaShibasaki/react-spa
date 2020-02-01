@@ -21,11 +21,6 @@ export const setOnePhoto = photoData => ({
   photoData
 });
 
-export const addOnePhoto = photoData => ({
-  type: "ADD_ONE_PHOTO",
-  photoData
-});
-
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "SET_CURRENT_VIEW":
@@ -34,9 +29,6 @@ const reducer = (state = initialState, action) => {
       return { ...state, photos: action.photosData };
     case "SET_ONE_PHOTO":
       return { ...state, selectedPhoto: action.photoData };
-    case "ADD_ONE_PHOTO":
-      state.photos.push(...action.photoData);
-      return state;
     default:
       return state;
   }

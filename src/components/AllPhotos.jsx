@@ -3,6 +3,9 @@ import _ from "lodash";
 import { useSelector, useDispatch } from "react-redux";
 import { changeView, setOnePhoto } from "../components/redux";
 
+//third party library
+import uuidv4 from "uuid/v4";
+
 //WIP
 
 export default function AllPhotos() {
@@ -16,11 +19,11 @@ export default function AllPhotos() {
 
   return (
     <section id="photos">
-      {photos.map((photo, index) => (
+      {photos.map(photo => (
         <img
           className="image"
           onClick={() => onClickPhoto(photo)}
-          key={index}
+          key={uuidv4()}
           src={photo}
           alt="pancakes"
         />

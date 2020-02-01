@@ -1,7 +1,9 @@
 import React, { useRef } from "react";
 import _ from "lodash";
 import "../styles/upload.css";
-import { saveObject } from "../utils/index";
+import { saveObject, listObjects } from "../utils/index";
+
+const ALL_PHOTO_KEY = "allPhoto";
 
 export default function Upload() {
   const inputEl = useRef();
@@ -10,8 +12,10 @@ export default function Upload() {
     inputEl.current.click();
   };
 
-  const upload = e => {
+  const upload = async e => {
     saveObject(inputEl.current.files[0]);
+    // const allPhotos = await listObjects();
+    // localStorage.setItem(ALL_PHOTO_KEY, JSON.stringify(allPhotos));
   };
 
   return (
